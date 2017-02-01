@@ -1,0 +1,13 @@
+---
+- hosts: webservers
+  user: root
+
+  tasks:
+
+  #Dar permisos a los ficheros de la carpeta /tmp/prueba
+  ##
+
+  - file:
+     path: "/home/prueba3/"
+     mode: 0700
+     recurse: yes

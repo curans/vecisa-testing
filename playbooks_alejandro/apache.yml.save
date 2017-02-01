@@ -1,0 +1,21 @@
+---
+- hosts: webservers
+  user: root
+
+  vars:
+    doc_root: /etc/ansible/Playbooks/vecisa-testing/playbooks_alejandro/document_root
+  
+  tasks:
+
+  #Apache
+  ##
+
+    - name: Install Apache
+      yum: name=httpd
+
+    - name: Create custom docmuent root
+      file: path=doc_root state=directory
+
+    - name: Set up HTML file
+      copy: src= up HTML file
+      copy: src=indeindex.html dest=/index.html mode=0644

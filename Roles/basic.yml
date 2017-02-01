@@ -1,0 +1,18 @@
+---
+ - hosts: webservers
+   user: root
+   roles:
+   - Test
+
+  #Instalación de paquetes
+   tasks:
+ 
+     - name: Check installed packages 
+       yum:
+        list: --all 
+        state: installed 
+       register: mylist
+
+     - name: debug
+       debug:
+        msg: "{{mylist}}"

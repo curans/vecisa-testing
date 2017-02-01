@@ -2,15 +2,22 @@
 - hosts: webservers
   user: root
 
+  roles:
+    role: Test
+
   tasks:
 
   #Instalación de paquetes
-  ##
 
-  - user:
-      name: pepe
-      comment: "Probando Pepe"
-  
-  roles:
-     - role-nginx
-      
+  - name: Check installed packages 
+    
+    yum:
+     list: --all 
+     state: installed 
+    register: mylist
+
+  - name: debug
+    debug:
+      msg: "{{mylist}}"i
+
+  - name: 

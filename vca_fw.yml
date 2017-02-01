@@ -1,0 +1,23 @@
+---
+- hosts: cloud_server
+  connection: local
+  
+  vars:
+    vdc: "VECISA-DEMO"
+    public_ip: "185.76.215.92"
+    nat_ip: "10.1.1.105"
+
+  tasks:
+
+   - vca_nat:
+       vdc_name: "{{ vdc }}"
+       state: present
+       nat_rules:
+         - rule_type: DNAT
+           original_ip: "{{ public_ip }}"
+           original_port: 8087
+           translated_ip: "{{ nat_ip }}"
+           translated_port: 8088
+#  roles:
+ #  - role-nginx
+      
